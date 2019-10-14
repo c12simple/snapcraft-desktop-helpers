@@ -21,8 +21,8 @@ $(DEST_LAUNCHER):
 	@cat $(SRC_DIR)/runtime-exports >> $(DEST_LAUNCHER)
 	@cat $(SRC_DIR)/desktop-exports >> $(DEST_LAUNCHER)
 	@cat $(SRC_DIR)/launcher-specific >> $(DEST_LAUNCHER)
-	@cat $(SRC_DIR)/mark-and-exec >> $(DEST_LAUNCHER)
 	@echo "echo $LD_LIBRARY_PATH" >> $(DEST_LAUNCHER)
+	@cat $(SRC_DIR)/mark-and-exec >> $(DEST_LAUNCHER)	
 	@echo "USE_$(FLAVOR)=true" >> $(FLAVOR_FILE)
 	gcc -Wall -O2 -o $(BINDTEXTDOMAIN) -fPIC -shared $(SRC_DIR)/../src/bindtextdomain.c -ldl
 		
