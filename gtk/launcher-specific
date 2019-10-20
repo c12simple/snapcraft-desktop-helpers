@@ -29,6 +29,11 @@ if [ $needs_update = true ]; then
   mkdir -p $GTK_IM_MODULE_DIR
   if [ "$USE_gtk3" = true ]; then
     echo "=============use_gtk3========="
+    append_dir $LD_LIBRARY_PATH $RUNTIME/usr/lib/$ARCH
+    echo $LD_LIBRARY_PATH
+    echo $GTK_IM_MODULE_DIR
+    echo $GTK_IM_MODULE_FILE
+    echo "=============use_gtk3========="
     ln -s $RUNTIME/usr/lib/$ARCH/gtk-3.0/3.0.0/immodules/*.so $GTK_IM_MODULE_DIR
     async_exec $RUNTIME/usr/lib/$ARCH/libgtk-3-0/gtk-query-immodules-3.0 > $GTK_IM_MODULE_FILE
   else
